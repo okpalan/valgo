@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "removeComments": true,
+        "outDir": "dist",
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "declaration": true,
+        "declarationDir": "dist/@types",
+        "target": "ES5",
+        "lib": [
+            "esnext",
+            "dom"
+        ],
+        "strict": true,
+        "baseUrl": "./src",
+        "paths": {
+            "./*": [
+                "./*"
+            ],
+        },
+    },
+    "include": [
+        "src/**/*",
+        "src/@types/*"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
