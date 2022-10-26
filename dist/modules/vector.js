@@ -19,7 +19,7 @@ var Vector;
             this.x -= vector.x;
             this.y -= vector.y;
         };
-        Vec2.prototype.divide = function (vector) {
+        Vec2.prototype.div = function (vector) {
             this.x /= vector.x;
             this.y /= vector.y;
         };
@@ -44,7 +44,7 @@ var Vector;
         Vec2.prototype.normalize = function () {
             var magnitude = this.magnitude();
             if (magnitude != 0) {
-                this.divide(magnitude);
+                this.div(magnitude);
             }
         };
         Vec2.prototype.isNotZero = function () {
@@ -103,6 +103,53 @@ var Vector;
             this.x *= vector.x;
             this.y *= vector.y;
             this.z *= vector.z;
+        };
+        Vec3.prototype.div = function (vector) {
+            this.x /= vector.x;
+            this.y /= vector.y;
+            this.z /= vector.z;
+        };
+        Vec3.prototype.lenSquared = function () {
+            return (this.x * this.x) + (this.y * this.y) + (this.z * this.z);
+        };
+        Vec3.prototype.magnitude = function () {
+            return Math.sqrt(this.lenSquared());
+        };
+        Vec3.prototype.normalize = function () {
+            var magnitude = this.magnitude();
+            if (magnitude != 0) {
+                this.div(magnitude);
+            }
+        };
+        Vec3.prototype.isNormalized = function () {
+            var isNotZero = (this.x && this.y && this.z) !== 0;
+            return this.lenSquared() >= 1 && isNotZero;
+        };
+        Vec3.prototype.limit = function (lim) {
+            if (this.magnitude() > lim) {
+                this.normalize();
+                this.dot(lim);
+            }
+        };
+        Vec3.prototype.cross = function (vector) {
+            var x = this.y * vector.z - this.z * vector.y;
+            var y = this.z * vector.x - this.x * vector.z;
+            var z = this.x * vector.y - this.y * vector.x;
+            return new Vec3(x, y, z);
+        };
+        Vec3.prototype.unit = function () {
+            this.x /= this.magnitude();
+            this.y /= this.magnitude();
+            this.z /= this.magnitude();
+        };
+        Vec3.prototype.fromArray = function (arr) {
+            return new Vec3(arr[0], arr[1]);
+        };
+        Vec3.prototype.toArray = function () {
+            return [this.x, this.y];
+        };
+        Vec3.prototype.clone = function () {
+            return new Vec3(this.x, this.y, this.z);
         };
         Vec3.I = new Vec3(1, 0, 0);
         Vec3.J = new Vec3(0, 1, 0);

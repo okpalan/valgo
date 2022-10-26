@@ -17,7 +17,7 @@ namespace Vector {
             this.x -= vector.x;
             this.y -= vector.y;
         }
-        divide(vector) {
+        div(vector) {
             this.x /= vector.x;
             this.y /= vector.y
         }
@@ -42,7 +42,7 @@ namespace Vector {
         normalize() {
             var magnitude = this.magnitude();
             if (magnitude != 0) {
-                this.divide(magnitude);
+                this.div(magnitude);
             }
         }
         isNotZero() {
@@ -101,6 +101,53 @@ namespace Vector {
             this.x *= vector.x;
             this.y *= vector.y;
             this.z *= vector.z;
+        }
+        div(vector) {
+            this.x /= vector.x;
+            this.y /= vector.y;
+            this.z /= vector.z;
+        }
+        lenSquared() {
+            return (this.x * this.x) + (this.y * this.y) + (this.z * this.z)
+        }
+        magnitude() {
+            return Math.sqrt(this.lenSquared());
+        }
+        normalize() {
+            var magnitude = this.magnitude();
+            if (magnitude != 0) {
+                this.div(magnitude);
+            }
+        }
+        isNormalized() {
+            var isNotZero = (this.x && this.y && this.z) !== 0;
+            return this.lenSquared() >= 1 && isNotZero;
+        }
+        limit(lim) {
+            if (this.magnitude() > lim) {
+                this.normalize();
+                this.dot(lim);
+            }
+        }
+        cross(vector) {
+            var x = this.y * vector.z - this.z * vector.y;
+            var y = this.z * vector.x - this.x * vector.z;
+            var z = this.x * vector.y - this.y * vector.x;
+            return new Vec3(x, y, z)
+        }
+        unit() {
+            this.x /= this.magnitude();
+            this.y /= this.magnitude();
+            this.z /= this.magnitude();
+        }
+        fromArray(arr) {
+            return new Vec3(arr[0], arr[1]);
+        }
+        toArray() {
+            return [this.x, this.y]
+        }
+        clone(){
+            return new Vec3(this.x, this.y, this.z);
         }
     }
 }

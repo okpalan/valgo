@@ -8,7 +8,7 @@ declare namespace Vector {
         static J: Vec2;
         add(vector: any): void;
         subtract(vector: any): void;
-        divide(vector: any): void;
+        div(vector: any): void;
         dot(vector: any): void;
         crossProduct(vector: any): void;
         scale(scalar: number): void;
@@ -35,5 +35,16 @@ declare namespace Vector {
         add(vector: any): void;
         subtract(vector: any): void;
         dot(vector: any): void;
+        div(vector: any): void;
+        lenSquared(): number;
+        magnitude(): number;
+        normalize(): void;
+        isNormalized(): boolean;
+        limit(lim: any): void;
+        cross(vector: any): Vec3;
+        unit(): void;
+        fromArray(arr: any): Vec3;
+        toArray(): number[];
+        clone(): Vec3;
     }
 }
