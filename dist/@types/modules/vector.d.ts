@@ -46,6 +46,6 @@ declare namespace Vector {
         fromArray(arr: any): Vec3;
         toArray(): number[];
         clone(): Vec3;
-        toString(): any;
+        toString(): string;
     }
 }

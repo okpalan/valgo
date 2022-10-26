@@ -151,6 +151,9 @@ var Vector;
         Vec3.prototype.clone = function () {
             return new Vec3(this.x, this.y, this.z);
         };
+        Vec3.prototype.toString = function () {
+            return '<' + this.x + ',' + this.y + ',' + this.z + '>';
+        };
         Vec3.I = new Vec3(1, 0, 0);
         Vec3.J = new Vec3(0, 1, 0);
         Vec3.K = new Vec3(0, 0, 1);

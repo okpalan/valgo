@@ -146,9 +146,11 @@ namespace Vector {
         toArray() {
             return [this.x, this.y]
         }
-        clone(){
+        clone() {
             return new Vec3(this.x, this.y, this.z);
         }
-        toString()
+        toString() {
+            return '<' + this.x + ',' + this.y + ',' + this.z + '>'
+        }
     }
 }
