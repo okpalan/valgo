@@ -1,9 +1,7 @@
-
-
-namespace Vector {
+export default Vector;
+ namespace Vector {
     export class Vec2 {
-        constructor(public x: number = 0, public y: number = 0) {
-        }
+        constructor(public x: number = 0, public y: number = 0) { }
         static create(x: number, y: number) {
             return new Vec2(x, y)
         }
@@ -81,7 +79,8 @@ namespace Vector {
         }
         static I = new Vec3(1, 0, 0);
         static J = new Vec3(0, 1, 0);
-        static K = new Vec3(0, 0, 1)
+        static K = new Vec3(0, 0, 1);
+
         scale(scalar) {
             this.x *= scalar;
             this.y *= scalar;
