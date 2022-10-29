@@ -1,3 +1,4 @@
+export default Vector;
 declare namespace Vector {
     class Vec2 {
         x: number;
@@ -46,6 +47,7 @@ declare namespace Vector {
         fromArray(arr: any): Vec3;
         toArray(): number[];
         clone(): Vec3;
+        static create(x: any, y: any, z: any): Vec3;
         toString(): string;
     }
 }

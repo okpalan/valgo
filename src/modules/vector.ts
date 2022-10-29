@@ -1,10 +1,11 @@
 export default Vector;
- namespace Vector {
+namespace Vector {
     export class Vec2 {
         constructor(public x: number = 0, public y: number = 0) { }
         static create(x: number, y: number) {
             return new Vec2(x, y)
         }
+        
         static I = new Vec2(1, 0);
         static J = new Vec2(0, 1);
         add(vector) {
@@ -57,6 +58,7 @@ export default Vector;
             this.x /= this.magnitude();
             this.y /= this.magnitude();
         }
+        
         fromArray(arr: number[]) {
             return new Vec2(arr[0], arr[1])
         }
@@ -112,10 +114,10 @@ export default Vector;
         magnitude() {
             return Math.sqrt(this.lenSquared());
         }
-        normalize() {
-            var magnitude = this.magnitude();
+        normalize() { // incorrect
+            var magnitude = this.magnitude(); // number
             if (magnitude != 0) {
-                this.div(magnitude);
+                this.div(magnitude); // change this.
             }
         }
         isNormalized() {
@@ -147,6 +149,9 @@ export default Vector;
         }
         clone() {
             return new Vec3(this.x, this.y, this.z);
+        }
+        static create(x, y, z) {
+            return new Vec3(x, y, z);
         }
         toString() {
             return '<' + this.x + ',' + this.y + ',' + this.z + '>'

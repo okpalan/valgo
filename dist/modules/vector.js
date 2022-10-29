@@ -1,4 +1,6 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = Vector;
 var Vector;
 (function (Vector) {
     var Vec2 = (function () {
@@ -150,6 +152,9 @@ var Vector;
         };
         Vec3.prototype.clone = function () {
             return new Vec3(this.x, this.y, this.z);
+        };
+        Vec3.create = function (x, y, z) {
+            return new Vec3(x, y, z);
         };
         Vec3.prototype.toString = function () {
             return '<' + this.x + ',' + this.y + ',' + this.z + '>';
